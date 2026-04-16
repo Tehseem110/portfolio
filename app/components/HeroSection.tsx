@@ -61,7 +61,7 @@ export default function HeroSection() {
             borderRadius: "9999px",
             background: "rgba(233, 99, 26,0.12)",
             border: "1px solid rgba(233, 99, 26,0.25)",
-            color: "#555555",
+            color: "#a3a3a3",
             fontSize: "0.82rem",
             fontWeight: 500,
             marginBottom: "1.75rem",
@@ -88,7 +88,7 @@ export default function HeroSection() {
             lineHeight: 1.1,
             letterSpacing: "-0.03em",
             marginBottom: "1rem",
-            color: "#333333",
+            color: "#ffffff",
           }}
         >
           Tehseem{" "}
@@ -111,16 +111,16 @@ export default function HeroSection() {
         <p
           style={{
             fontSize: "1rem",
-            color: "#555555",
+            color: "#a3a3a3",
             lineHeight: 1.75,
             maxWidth: "600px",
             margin: "0 auto 2.5rem",
           }}
         >
           3+ years building scalable web & mobile apps with{" "}
-          <strong style={{ color: "#555555" }}>React Native</strong>,{" "}
-          <strong style={{ color: "#555555" }}>Next.js</strong>, and{" "}
-          <strong style={{ color: "#555555" }}>Node.js</strong>. 10+ live
+          <strong style={{ color: "#a3a3a3" }}>React Native</strong>,{" "}
+          <strong style={{ color: "#a3a3a3" }}>Next.js</strong>, and{" "}
+          <strong style={{ color: "#a3a3a3" }}>Node.js</strong>. 10+ live
           products shipped.
         </p>
 
@@ -188,7 +188,7 @@ export default function HeroSection() {
             flexDirection: "column",
             alignItems: "center",
             gap: "6px",
-            color: "#555555",
+            color: "#a3a3a3",
             fontSize: "0.75rem",
           }}
         >

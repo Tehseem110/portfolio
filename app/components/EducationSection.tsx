@@ -12,7 +12,7 @@ const education = [
     institution: "Manav Rachna International University",
     period: "Aug 2018 — May 2021",
     emoji: "📚",
-    color: "#555555",
+    color: "#a3a3a3",
   },
 ];
 
@@ -22,7 +22,7 @@ export default function EducationSection() {
       id="education"
       style={{
         padding: "6rem 1.5rem",
-        background: "rgba(235, 235, 223,0.5)",
+        background: "rgba(10, 10, 10, 0.5)",
         borderTop: "1px solid rgba(233, 99, 26,0.08)",
         borderBottom: "1px solid rgba(233, 99, 26,0.08)",
       }}
@@ -67,7 +67,7 @@ export default function EducationSection() {
                   style={{
                     fontSize: "1rem",
                     fontWeight: 700,
-                    color: "#333333",
+                    color: "#ffffff",
                     margin: "0 0 4px",
                     lineHeight: 1.35,
                   }}
@@ -85,7 +85,7 @@ export default function EducationSection() {
                 >
                   {edu.institution}
                 </p>
-                <span style={{ color: "#555555", fontSize: "0.82rem" }}>
+                <span style={{ color: "#a3a3a3", fontSize: "0.82rem" }}>
                   {edu.period}
                 </span>
               </div>

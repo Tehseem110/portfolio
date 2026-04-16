@@ -8,15 +8,15 @@
 }
 
 :root {
-  --background: #EBEBDF;
-  --foreground: #333333;
+  --background: #000000;
+  --foreground: #ffffff;
   --accent-primary: #E9631A;
   --accent-secondary: #E9631A;
-  --accent-tertiary: #FFFFFF;
-  --card-bg: #FFFFFF;
+  --accent-tertiary: #ffffff;
+  --card-bg: #111111;
   --card-border: rgba(233, 99, 26, 0.2);
-  --muted: #666666;
-  --muted-bg: #EBEBDF;
+  --muted: #a3a3a3;
+  --muted-bg: #000000;
 }
 
 * {
@@ -120,7 +120,7 @@ body {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: #ffffff;
 }
 
 .section-divider {

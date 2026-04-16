@@ -31,7 +31,7 @@ export default function AboutSection() {
       id="about"
       style={{
         padding: "6rem 1.5rem",
-        background: "rgba(235, 235, 223,0.5)",
+        background: "rgba(10, 10, 10, 0.5)",
         borderTop: "1px solid rgba(233, 99, 26,0.08)",
         borderBottom: "1px solid rgba(233, 99, 26,0.08)",
       }}
@@ -53,7 +53,7 @@ export default function AboutSection() {
           <div>
             <p
               style={{
-                color: "#555555",
+                color: "#a3a3a3",
                 fontSize: "1.05rem",
                 lineHeight: 1.85,
                 marginBottom: "2rem",
@@ -64,7 +64,7 @@ export default function AboutSection() {
 
             <p
               style={{
-                color: "#555555",
+                color: "#a3a3a3",
                 fontSize: "0.95rem",
                 lineHeight: 1.8,
                 marginBottom: "2rem",
@@ -98,7 +98,7 @@ export default function AboutSection() {
                     fontSize: "0.88rem",
                   }}
                 >
-                  <span style={{ color: "#555555", minWidth: "90px" }}>
+                  <span style={{ color: "#a3a3a3", minWidth: "90px" }}>
                     {fact.label}
                   </span>
                   <span style={{ color: "#E9631A", fontWeight: 500 }}>
@@ -130,7 +130,7 @@ export default function AboutSection() {
                   style={{
                     fontSize: "0.9rem",
                     fontWeight: 700,
-                    color: "#333333",
+                    color: "#ffffff",
                     marginBottom: "0.5rem",
                     lineHeight: 1.3,
                   }}
@@ -140,7 +140,7 @@ export default function AboutSection() {
                 <p
                   style={{
                     fontSize: "0.8rem",
-                    color: "#555555",
+                    color: "#a3a3a3",
                     lineHeight: 1.65,
                     margin: 0,
                   }}

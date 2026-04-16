@@ -130,7 +130,7 @@ export default function ProjectsSection() {
                   style={{
                     fontSize: "1.05rem",
                     fontWeight: 700,
-                    color: "#333333",
+                    color: "#ffffff",
                     margin: 0,
                     lineHeight: 1.3,
                   }}
@@ -155,7 +155,7 @@ export default function ProjectsSection() {
                   rel="noopener noreferrer"
                   aria-label={`Visit ${project.title}`}
                   style={{
-                    color: "#555555",
+                    color: "#a3a3a3",
                     flexShrink: 0,
                     padding: "6px",
                     borderRadius: "8px",
@@ -186,7 +186,7 @@ export default function ProjectsSection() {
             <p
               style={{
                 fontSize: "0.875rem",
-                color: "#555555",
+                color: "#a3a3a3",
                 lineHeight: 1.7,
                 margin: 0,
                 flexGrow: 1,
@@ -213,10 +213,10 @@ export default function ProjectsSection() {
                     display: "flex",
                     gap: "8px",
                     fontSize: "0.8rem",
-                    color: "#555555",
+                    color: "#a3a3a3",
                   }}
                 >
-                  <span style={{ color: "#555555" }}>✓</span>
+                  <span style={{ color: "#a3a3a3" }}>✓</span>
                   {h}
                 </li>
               ))}

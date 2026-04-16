@@ -44,7 +44,7 @@ export default function ExperienceSection() {
       id="experience"
       style={{
         padding: "6rem 1.5rem",
-        background: "rgba(235, 235, 223,0.5)",
+        background: "rgba(10, 10, 10, 0.5)",
         borderTop: "1px solid rgba(233, 99, 26,0.08)",
         borderBottom: "1px solid rgba(233, 99, 26,0.08)",
       }}
@@ -73,7 +73,7 @@ export default function ExperienceSection() {
                     borderRadius: "9999px",
                     background: "rgba(233, 99, 26,0.1)",
                     border: "1px solid rgba(233, 99, 26,0.25)",
-                    color: "#555555",
+                    color: "#a3a3a3",
                     fontSize: "0.75rem",
                     fontWeight: 500,
                   }}
@@ -97,7 +97,7 @@ export default function ExperienceSection() {
                   style={{
                     fontSize: "1.15rem",
                     fontWeight: 700,
-                    color: "#333333",
+                    color: "#ffffff",
                     margin: "0 0 4px",
                   }}
                 >
@@ -114,7 +114,7 @@ export default function ExperienceSection() {
                   <span className="gradient-text" style={{ fontWeight: 600 }}>
                     {exp.company}
                   </span>
-                  <span style={{ color: "#555555", fontSize: "0.85rem" }}>
+                  <span style={{ color: "#a3a3a3", fontSize: "0.85rem" }}>
                     {exp.period}
                   </span>
                 </div>
@@ -137,7 +137,7 @@ export default function ExperienceSection() {
                     style={{
                       display: "flex",
                       gap: "12px",
-                      color: "#555555",
+                      color: "#a3a3a3",
                       fontSize: "0.9rem",
                       lineHeight: 1.65,
                     }}

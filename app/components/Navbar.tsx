@@ -83,7 +83,7 @@ export default function Navbar() {
                 className="floating-nav-link" 
                 id={`nav-${item.label.toLowerCase()}`}
                 style={{
-                  color: "#EBEBDF",
+                  color: "#ffffff",
                   fontSize: "0.72rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.08em",
@@ -110,8 +110,8 @@ export default function Navbar() {
           href="#contact"
           className="hidden-mobile"
           style={{
-            background: "#EBEBDF",
-            color: "#1A1A1A",
+            background: "#ffffff",
+            color: "#000000",
             padding: "0.65rem 1.4rem",
             borderRadius: "9999px",
             fontSize: "0.72rem",
@@ -143,7 +143,7 @@ export default function Navbar() {
             border: "none",
             cursor: "pointer",
             padding: "8px 12px 8px 0",
-            color: "#EBEBDF",
+            color: "#ffffff",
             display: "none",
           }}
           className="show-mobile"
@@ -187,7 +187,7 @@ export default function Navbar() {
                   href={item.href}
                   style={{ 
                     fontSize: "0.8rem",
-                    color: "#EBEBDF",
+                    color: "#ffffff",
                     textDecoration: "none",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",

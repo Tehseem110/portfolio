@@ -95,7 +95,7 @@ export default function SkillsSection() {
                       marginBottom: "6px",
                     }}
                   >
-                    <span style={{ fontSize: "0.85rem", color: "#555555" }}>
+                    <span style={{ fontSize: "0.85rem", color: "#a3a3a3" }}>
                       {skill.name}
                     </span>
                     <span style={{ fontSize: "0.78rem", color: "#E9631A" }}>

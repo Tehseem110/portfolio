@@ -62,7 +62,7 @@ export default function ContactSection() {
 
       <p
         style={{
-          color: "#555555",
+          color: "#a3a3a3",
           fontSize: "1rem",
           lineHeight: 1.75,
           maxWidth: "520px",
@@ -112,7 +112,7 @@ export default function ContactSection() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#555555",
+                color: "#a3a3a3",
               }}
             >
               {link.icon}
@@ -130,7 +130,7 @@ export default function ContactSection() {
               >
                 {link.label}
               </div>
-              <div style={{ fontSize: "0.85rem", color: "#555555" }}>
+              <div style={{ fontSize: "0.85rem", color: "#a3a3a3" }}>
                 {link.value}
               </div>
             </div>
