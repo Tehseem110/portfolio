@@ -1,209 +1,114 @@
+"use client";
+
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, Environment, Bounds } from "@react-three/drei";
+import { Suspense } from "react";
+
+/* ---------- 3D MODEL ---------- */
+function Model() {
+  // Reference the file directly from the public folder by using an absolute path relative to `public`
+  const { scene } = useGLTF("/Model/pony_cartoon.glb");
+
+  // We remove the hardcoded scale and position because <Bounds> will handle fitting it automatically
+  return <primitive object={scene} />;
+}
+
+/* ---------- HERO ---------- */
 export default function HeroSection() {
   return (
-    <section
-      id="hero"
-      className="hero-bg grid-pattern"
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "6rem 1.5rem 4rem",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Decorative blobs */}
-      <div
-        style={{
-          position: "absolute",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(233, 99, 26,0.12) 0%, transparent 70%)",
-          top: "-150px",
-          right: "-150px",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(235, 235, 223,0.08) 0%, transparent 70%)",
-          bottom: "-100px",
-          left: "-100px",
-          pointerEvents: "none",
-        }}
-      />
+    <section className="relative min-h-screen bg-black overflow-hidden px-6 py-24">
+      {/* 🔥 Glow Effects */}
+      <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] bg-orange-500 opacity-30 blur-[120px] rounded-full" />
+      <div className="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] bg-white opacity-10 blur-[120px] rounded-full" />
 
-      <div
-        style={{
-          maxWidth: "800px",
-          width: "100%",
-          textAlign: "center",
-          position: "relative",
-          zIndex: 1,
-        }}
-        className="animate-fade-up"
-      >
-        {/* Badge */}
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "6px 18px",
-            borderRadius: "9999px",
-            background: "rgba(233, 99, 26,0.12)",
-            border: "1px solid rgba(233, 99, 26,0.25)",
-            color: "#a3a3a3",
-            fontSize: "0.82rem",
-            fontWeight: 500,
-            marginBottom: "1.75rem",
-          }}
-        >
-          <span
-            style={{
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              background: "#E9631A",
-              display: "inline-block",
-              boxShadow: "0 0 8px #E9631A",
-            }}
-          />
-          Available for new opportunities
+      {/* Container */}
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
+        {/* LEFT (3D) */}
+        <div className="h-[400px] md:h-[500px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl">
+          <Canvas camera={{ position: [0, 0, 5] }}>
+            <ambientLight intensity={1.5} />
+            <directionalLight position={[2, 2, 2]} intensity={2.5} />
+            <Environment preset="city" />
+
+            <Suspense fallback={null}>
+              <Bounds fit clip observe margin={1.2}>
+                <Model />
+              </Bounds>
+            </Suspense>
+
+            <OrbitControls
+              autoRotate
+              autoRotateSpeed={2}
+              enableZoom={false}
+              makeDefault
+            />
+          </Canvas>
         </div>
 
-        {/* Name */}
-        <h1
-          style={{
-            fontSize: "clamp(2.8rem, 8vw, 5rem)",
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            marginBottom: "1rem",
-            color: "#ffffff",
-          }}
-        >
-          Tehseem{" "}
-          <span className="gradient-text">Ahmed</span>
-        </h1>
+        {/* RIGHT (Text) */}
+        <div className="text-white">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/5 backdrop-blur-md border border-white/10 mb-6">
+            <span className="w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_8px_#f97316]" />
+            <span className="text-sm text-gray-400">
+              Available for new opportunities
+            </span>
+          </div>
 
-        {/* Tagline */}
-        <p
-          style={{
-            fontSize: "clamp(1.1rem, 3vw, 1.4rem)",
-            color: "var(--muted)",
-            marginBottom: "1.25rem",
-            fontWeight: 400,
-          }}
-        >
-          Full Stack Developer
-        </p>
+          {/* Heading */}
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Tehseem{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">
+              Ahmed
+            </span>
+          </h1>
 
-        {/* Summary */}
-        <p
-          style={{
-            fontSize: "1rem",
-            color: "#a3a3a3",
-            lineHeight: 1.75,
-            maxWidth: "600px",
-            margin: "0 auto 2.5rem",
-          }}
-        >
-          3+ years building scalable web & mobile apps with{" "}
-          <strong style={{ color: "#a3a3a3" }}>React Native</strong>,{" "}
-          <strong style={{ color: "#a3a3a3" }}>Next.js</strong>, and{" "}
-          <strong style={{ color: "#a3a3a3" }}>Node.js</strong>. 10+ live
-          products shipped.
-        </p>
+          {/* Role */}
+          <p className="mt-4 text-lg text-gray-400">Full Stack Developer</p>
 
-        {/* CTA buttons */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1rem",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "3.5rem",
-          }}
-        >
-          <a href="#projects" id="hero-cta-projects" className="btn-primary">
-            View Projects
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-          <a href="#contact" id="hero-cta-contact" className="btn-outline">
-            Get in Touch
-          </a>
-        </div>
+          {/* Description */}
+          <p className="mt-4 text-gray-400 max-w-lg leading-relaxed">
+            3+ years building scalable web & mobile apps with{" "}
+            <span className="text-gray-300 font-medium">React Native</span>,{" "}
+            <span className="text-gray-300 font-medium">Next.js</span>, and{" "}
+            <span className="text-gray-300 font-medium">Node.js</span>.
+          </p>
 
-        {/* Stats row */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1rem",
-            maxWidth: "500px",
-            margin: "0 auto",
-          }}
-        >
-          {[
-            { value: "3+", label: "Years Exp." },
-            { value: "10+", label: "Live Products" },
-            { value: "50k+", label: "Users Served" },
-          ].map((stat) => (
-            <div key={stat.label} className="stat-card">
+          {/* Buttons */}
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#projects"
+              className="px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 transition font-medium"
+            >
+              View Projects →
+            </a>
+
+            <a
+              href="#contact"
+              className="px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition"
+            >
+              Get in Touch
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-10 flex gap-4">
+            {[
+              { value: "3+", label: "Years Exp." },
+              { value: "10+", label: "Products" },
+              { value: "200k+", label: "Users" },
+            ].map((item) => (
               <div
-                className="gradient-text"
-                style={{ fontSize: "1.75rem", fontWeight: 700, lineHeight: 1 }}
+                key={item.label}
+                className="px-4 py-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10"
               >
-                {stat.value}
+                <div className="text-xl font-semibold text-orange-400">
+                  {item.value}
+                </div>
+                <div className="text-xs text-gray-400">{item.label}</div>
               </div>
-              <div
-                style={{
-                  color: "var(--muted)",
-                  fontSize: "0.78rem",
-                  marginTop: "4px",
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll hint */}
-        <div
-          style={{
-            marginTop: "4rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "6px",
-            color: "#a3a3a3",
-            fontSize: "0.75rem",
-          }}
-        >
-          <span>scroll down</span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            style={{ animation: "fadeUp 1.2s ease infinite alternate" }}
-          >
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
+            ))}
+          </div>
         </div>
       </div>
     </section>
