@@ -5,7 +5,14 @@ const contactLinks = [
     href: "mailto:tehseem010@gmail.com",
     id: "contact-email",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <rect x="2" y="4" width="20" height="16" rx="2" />
         <path d="m22 7-10 7L2 7" />
       </svg>
@@ -17,15 +24,22 @@ const contactLinks = [
     href: "tel:+919560091968",
     id: "contact-phone",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.13.96.35 1.9.68 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.68a2 2 0 011.72 2.03z" />
       </svg>
     ),
   },
   {
     label: "GitHub",
-    value: "github.com/tehseem",
-    href: "https://github.com",
+    value: "github.com/tehseem110",
+    href: "https://github.com/tehseem110",
     id: "contact-github",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -36,7 +50,7 @@ const contactLinks = [
   {
     label: "LinkedIn",
     value: "linkedin.com/in/tehseem",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/tehseem-ahmed-078a92235/",
     id: "contact-linkedin",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -70,8 +84,8 @@ export default function ContactSection() {
         }}
       >
         I&apos;m always open to discussing new projects, creative ideas, or
-        opportunities to be part of your vision. Let&apos;s build something great
-        together.
+        opportunities to be part of your vision. Let&apos;s build something
+        great together.
       </p>
 
       {/* Contact cards */}
@@ -90,7 +104,9 @@ export default function ContactSection() {
             id={link.id}
             href={link.href}
             target={link.href.startsWith("http") ? "_blank" : undefined}
-            rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            rel={
+              link.href.startsWith("http") ? "noopener noreferrer" : undefined
+            }
             className="glass-card"
             style={{
               padding: "1.5rem",
@@ -139,8 +155,19 @@ export default function ContactSection() {
       </div>
 
       {/* CTA */}
-      <a href="mailto:tehseem010@gmail.com" id="contact-cta-email" className="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <a
+        href="mailto:tehseem010@gmail.com"
+        id="contact-cta-email"
+        className="btn-primary"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <rect x="2" y="4" width="20" height="16" rx="2" />
           <path d="m22 7-10 7L2 7" />
         </svg>

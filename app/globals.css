@@ -19,6 +19,178 @@
   --muted-bg: #000000;
 }
 
+[data-theme="light"] {
+  --background: #F5F0EB;
+  --foreground: #111111;
+  --accent-primary: #C94E0A;
+  --accent-secondary: #C94E0A;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(201, 78, 10, 0.18);
+  --muted: #5a5a5a;
+  --muted-bg: #F5F0EB;
+}
+
+/* ── Base ───────────────────────────────────────── */
+[data-theme="light"] body {
+  background: #F5F0EB;
+  color: #111111;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track { background: #ede8e2; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #C94E0A; }
+
+/* ── Glass cards ────────────────────────────────── */
+[data-theme="light"] .glass-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(201, 78, 10, 0.15) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.07) !important;
+}
+[data-theme="light"] .glass-card:hover {
+  border-color: rgba(201, 78, 10, 0.4) !important;
+  box-shadow: 0 12px 36px rgba(201, 78, 10, 0.10) !important;
+}
+
+/* ── Typography helpers ─────────────────────────── */
+[data-theme="light"] .section-title { color: #111111 !important; }
+[data-theme="light"] .gradient-text { background: #C94E0A; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+[data-theme="light"] .chip { background: rgba(201,78,10,0.08) !important; color: #C94E0A !important; border-color: rgba(201,78,10,0.2) !important; }
+
+/* ── Navbar ─────────────────────────────────────── */
+[data-theme="light"] header nav {
+  background: #FFFFFF !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] #nav-logo span { color: #111111 !important; }
+[data-theme="light"] #nav-logo svg { stroke: #111111 !important; }
+[data-theme="light"] .floating-nav-link { color: #333333 !important; }
+[data-theme="light"] .floating-nav-link:hover { color: #C94E0A !important; }
+/* Mobile dropdown */
+[data-theme="light"] header > div[class*="show-mobile"] { background: #FFFFFF !important; border-color: rgba(0,0,0,0.08) !important; }
+
+/* ── Hero section ───────────────────────────────── */
+[data-theme="light"] section.relative.min-h-screen {
+  background: #F5F0EB !important;
+}
+/* Glow blobs — softer in light */
+[data-theme="light"] section.relative.min-h-screen .absolute.bg-orange-500 { opacity: 0.12 !important; }
+[data-theme="light"] section.relative.min-h-screen .absolute.bg-white { opacity: 0.04 !important; }
+/* 3D canvas box */
+[data-theme="light"] section.relative.min-h-screen .absolute.inset-0 {
+  background: rgba(201,78,10,0.06) !important;
+  border-color: rgba(201,78,10,0.18) !important;
+}
+/* Hero text */
+[data-theme="light"] section.relative.min-h-screen .text-white { color: #111111 !important; }
+[data-theme="light"] section.relative.min-h-screen .text-gray-400 { color: #5a5a5a !important; }
+[data-theme="light"] section.relative.min-h-screen .text-gray-300 { color: #222222 !important; }
+[data-theme="light"] section.relative.min-h-screen .text-orange-400 { color: #C94E0A !important; }
+/* Badge */
+[data-theme="light"] section.relative.min-h-screen .bg-white\/5 {
+  background: rgba(0,0,0,0.05) !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+/* Buttons */
+[data-theme="light"] section.relative.min-h-screen .bg-orange-500 { background: #C94E0A !important; }
+[data-theme="light"] section.relative.min-h-screen .hover\:bg-orange-600:hover { background: #A83D07 !important; }
+[data-theme="light"] section.relative.min-h-screen .border-white\/20 { border-color: rgba(0,0,0,0.18) !important; color: #333333 !important; }
+[data-theme="light"] section.relative.min-h-screen .hover\:bg-white\/10:hover { background: rgba(0,0,0,0.06) !important; }
+/* Stat cards */
+[data-theme="light"] section.relative.min-h-screen .rounded-xl.bg-white\/5 {
+  background: #FFFFFF !important;
+  border-color: rgba(201,78,10,0.18) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07) !important;
+}
+/* Ticker */
+[data-theme="light"] .hero-ticker-item {
+  background: rgba(201,78,10,0.07) !important;
+  border-color: rgba(201,78,10,0.18) !important;
+  color: #444444 !important;
+}
+[data-theme="light"] .hero-ticker-item:hover { color: #C94E0A !important; border-color: rgba(201,78,10,0.4) !important; }
+[data-theme="light"] p.text-center.text-xs.text-gray-600 { color: #aaaaaa !important; }
+/* Ticker fade masks */
+[data-theme="light"] div[style*="linear-gradient(to right, #000"] { background: linear-gradient(to right, #F5F0EB, transparent) !important; }
+[data-theme="light"] div[style*="linear-gradient(to left, #000"] { background: linear-gradient(to left, #F5F0EB, transparent) !important; }
+/* Resume btn */
+[data-theme="light"] .hero-resume-btn {
+  background: rgba(201,78,10,0.10) !important;
+  border-color: rgba(201,78,10,0.45) !important;
+  color: #C94E0A !important;
+}
+
+/* ── Sections with dark bg ──────────────────────── */
+[data-theme="light"] section[style*="rgba(10, 10, 10, 0.5)"] {
+  background: #EDE7DF !important;
+  border-top-color: rgba(201,78,10,0.12) !important;
+  border-bottom-color: rgba(201,78,10,0.12) !important;
+}
+
+/* ── All #ffffff text ───────────────────────────── */
+[data-theme="light"] [style*="color: \"#ffffff\""],
+[data-theme="light"] [style*='color: "#ffffff"'] { color: #111111 !important; }
+/* Catch inline color:#ffffff written via style prop */
+[data-theme="light"] h3[style*="color: rgb(255, 255, 255)"] { color: #111111 !important; }
+
+/* ── All #a3a3a3 muted text ─────────────────────── */
+[data-theme="light"] [style*="color: rgb(163, 163, 163)"],
+[data-theme="light"] [style*='color: "#a3a3a3"'] { color: #5a5a5a !important; }
+
+/* ── About section specific ─────────────────────── */
+[data-theme="light"] #about p { color: #5a5a5a !important; }
+[data-theme="light"] #about span[style*="color: \"#a3a3a3\""] { color: #5a5a5a !important; }
+[data-theme="light"] #about h3[style] { color: #111111 !important; }
+
+/* ── Experience section ─────────────────────────── */
+[data-theme="light"] #experience h3 { color: #111111 !important; }
+[data-theme="light"] #experience li { color: #5a5a5a !important; }
+[data-theme="light"] #experience span[style*="rgb(163"] { color: #5a5a5a !important; }
+[data-theme="light"] #experience .current-badge { background: rgba(201,78,10,0.08) !important; }
+
+/* ── Education section ──────────────────────────── */
+[data-theme="light"] #education h3 { color: #111111 !important; }
+[data-theme="light"] #education span[style*="rgb(163"] { color: #5a5a5a !important; }
+
+/* ── Contact section ────────────────────────────── */
+[data-theme="light"] #contact p { color: #5a5a5a !important; }
+[data-theme="light"] #contact div[style*="rgb(163"] { color: #5a5a5a !important; }
+[data-theme="light"] #contact div[style*="rgb(163, 163, 163)"] { color: #5a5a5a !important; }
+[data-theme="light"] #contact a.glass-card { color: #111111 !important; }
+
+/* ── Footer ─────────────────────────────────────── */
+[data-theme="light"] footer { background: #EDE7DF !important; border-top-color: rgba(201,78,10,0.12) !important; }
+[data-theme="light"] footer p { color: #777777 !important; }
+
+/* ── Skill / timeline bars ──────────────────────── */
+[data-theme="light"] .skill-bar-bg { background: rgba(201,78,10,0.12) !important; }
+[data-theme="light"] .timeline-dot { background: #C94E0A !important; }
+
+/* ── Navbar CTA & mobile button ─────────────────── */
+[data-theme="light"] header nav a[href="#contact"] {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] #nav-menu-toggle { color: #111111 !important; }
+
+/* ── Projects & OpenSource sections ─────────────── */
+[data-theme="light"] #projects,
+[data-theme="light"] #open-source {
+  background: transparent !important;
+}
+[data-theme="light"] #projects h2,
+[data-theme="light"] #projects h3,
+[data-theme="light"] #open-source h2,
+[data-theme="light"] #open-source h3 { color: #111111 !important; }
+[data-theme="light"] #projects p,
+[data-theme="light"] #open-source p { color: #5a5a5a !important; }
+[data-theme="light"] #projects span[style*="rgb(163"],
+[data-theme="light"] #open-source span[style*="rgb(163"] { color: #5a5a5a !important; }
+
+/* ── Btn primary/outline in light ───────────────── */
+[data-theme="light"] .btn-primary { background: #C94E0A !important; }
+[data-theme="light"] .btn-outline { border-color: rgba(201,78,10,0.55) !important; color: #C94E0A !important; }
+
+
 * {
   box-sizing: border-box;
 }

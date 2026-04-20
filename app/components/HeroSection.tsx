@@ -6,15 +6,32 @@ import { Suspense } from "react";
 
 /* ---------- 3D MODEL ---------- */
 function Model() {
-  // Reference the file directly from the public folder by using an absolute path relative to `public`
   const { scene } = useGLTF("/Model/pony_cartoon.glb");
-
-  // We remove the hardcoded scale and position because <Bounds> will handle fitting it automatically
   return <primitive object={scene} />;
 }
 
+const techStack = [
+  { label: "React.js", icon: "⚛️" },
+  { label: "React Native", icon: "📱" },
+  { label: "Next.js", icon: "▲" },
+  { label: "Node.js", icon: "🟢" },
+  { label: "TypeScript", icon: "🔷" },
+  { label: "Express.js", icon: "🚂" },
+  { label: "Nest.js", icon: "🐈" },
+  { label: "MySQL", icon: "🛢️" },
+  { label: "Firebase", icon: "🔥" },
+  { label: "Google Cloud", icon: "☁️" },
+  { label: "Tailwind CSS", icon: "🎨" },
+  { label: "Redux", icon: "🔄" },
+  { label: "Serverless", icon: "⚡" },
+  { label: "REST APIs", icon: "🔌" },
+];
+
 /* ---------- HERO ---------- */
 export default function HeroSection() {
+  // Duplicate for seamless infinite scroll
+  const ticker = [...techStack, ...techStack];
+
   return (
     <section className="relative min-h-screen bg-black overflow-hidden px-6 py-24">
       {/* 🔥 Glow Effects */}
@@ -23,26 +40,52 @@ export default function HeroSection() {
 
       {/* Container */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
-        {/* LEFT (3D) */}
-        <div className="h-[400px] md:h-[500px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={1.5} />
-            <directionalLight position={[2, 2, 2]} intensity={2.5} />
-            <Environment preset="city" />
+        {/* LEFT (3D + Resume) */}
+        <div className="relative h-[400px] md:h-[500px]">
+          {/* 3D Canvas */}
+          <div className="absolute inset-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl">
+            <Canvas camera={{ position: [0, 0, 5] }}>
+              <ambientLight intensity={1.5} />
+              <directionalLight position={[2, 2, 2]} intensity={2.5} />
+              <Environment preset="city" />
 
-            <Suspense fallback={null}>
-              <Bounds fit clip observe margin={1.2}>
-                <Model />
-              </Bounds>
-            </Suspense>
+              <Suspense fallback={null}>
+                <Bounds fit clip observe margin={1.2}>
+                  <Model />
+                </Bounds>
+              </Suspense>
 
-            <OrbitControls
-              autoRotate
-              autoRotateSpeed={2}
-              enableZoom={false}
-              makeDefault
-            />
-          </Canvas>
+              <OrbitControls
+                autoRotate
+                autoRotateSpeed={2}
+                enableZoom={false}
+                makeDefault
+              />
+            </Canvas>
+          </div>
+
+          {/* Download Resume — overlaid at bottom */}
+          <a
+            href="/resume.pdf"
+            download
+            className="hero-resume-btn"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download Resume
+          </a>
         </div>
 
         {/* RIGHT (Text) */}
@@ -111,6 +154,118 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* ── Tech Stack Ticker ─────────────────────────────────────── */}
+      <div
+        className="relative z-10 mt-16"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "2rem" }}
+      >
+        <p
+          className="text-center text-xs text-gray-600 uppercase tracking-widest mb-5"
+        >
+          Tech I work with
+        </p>
+
+        {/* Fade masks on both edges */}
+        <div style={{ position: "relative", overflow: "hidden" }}>
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: "80px",
+              background: "linear-gradient(to right, #000, transparent)",
+              zIndex: 2,
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: "80px",
+              background: "linear-gradient(to left, #000, transparent)",
+              zIndex: 2,
+              pointerEvents: "none",
+            }}
+          />
+
+          {/* Scrolling track */}
+          <div className="hero-ticker-track">
+            {ticker.map((tech, i) => (
+              <div key={i} className="hero-ticker-item">
+                <span style={{ fontSize: "1rem" }}>{tech.icon}</span>
+                <span>{tech.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .hero-resume-btn {
+          position: absolute;
+          bottom: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 0.55rem 1.4rem;
+          border-radius: 999px;
+          background: rgba(233, 99, 26, 0.15);
+          border: 1px solid rgba(233, 99, 26, 0.5);
+          color: #E9631A;
+          font-size: 0.82rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          backdrop-filter: blur(12px);
+          text-decoration: none;
+          transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .hero-resume-btn:hover {
+          background: rgba(233, 99, 26, 0.3);
+          box-shadow: 0 0 18px rgba(233, 99, 26, 0.35);
+          transform: translateX(-50%) translateY(-2px);
+        }
+        .hero-ticker-track {
+          display: flex;
+          gap: 1rem;
+          width: max-content;
+          animation: hero-ticker 28s linear infinite;
+        }
+        .hero-ticker-track:hover {
+          animation-play-state: paused;
+        }
+        .hero-ticker-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.45rem 1.1rem;
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.04);
+          font-size: 0.82rem;
+          color: #a3a3a3;
+          white-space: nowrap;
+          backdrop-filter: blur(4px);
+          transition: color 0.2s, border-color 0.2s;
+          cursor: default;
+        }
+        .hero-ticker-item:hover {
+          color: #E9631A;
+          border-color: rgba(233,99,26,0.4);
+        }
+        @keyframes hero-ticker {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }
