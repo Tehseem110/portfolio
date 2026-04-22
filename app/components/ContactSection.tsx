@@ -1,3 +1,6 @@
+"use client";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
 const contactLinks = [
   {
     label: "Email",
@@ -61,6 +64,8 @@ const contactLinks = [
 ];
 
 export default function ContactSection() {
+  const cardsRef = useScrollReveal<HTMLDivElement>({ targets: "> a", stagger: 0.1, y: 30, duration: 0.6 });
+
   return (
     <section
       id="contact"
@@ -90,6 +95,7 @@ export default function ContactSection() {
 
       {/* Contact cards */}
       <div
+        ref={cardsRef}
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",

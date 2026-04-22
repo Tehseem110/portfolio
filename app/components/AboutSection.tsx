@@ -1,3 +1,6 @@
+"use client";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
 const about = {
   summary:
     "I'm a Full Stack Developer with 3+ years of experience building production-grade web and mobile applications. I specialize in crafting scalable systems — from CRM platforms managing 50,000+ users to offline-first mobile apps — using modern technologies across the full stack.",
@@ -44,6 +47,10 @@ const skillGroups = [
 ];
 
 export default function AboutSection() {
+  const bioRef = useScrollReveal<HTMLDivElement>({ stagger: 0.14, y: 32, duration: 0.7 });
+  const cardsRef = useScrollReveal<HTMLDivElement>({ stagger: 0.1, y: 36, duration: 0.6 });
+  const skillsRef = useScrollReveal<HTMLDivElement>({ targets: "> div", stagger: 0.12, y: 24, duration: 0.55 });
+
   return (
     <section
       id="about"
@@ -68,7 +75,7 @@ export default function AboutSection() {
           className="about-grid"
         >
           {/* Left: bio */}
-          <div>
+          <div ref={bioRef}>
             <p
               style={{
                 color: "#a3a3a3",
@@ -129,6 +136,7 @@ export default function AboutSection() {
 
           {/* Right: highlight cards */}
           <div
+            ref={cardsRef}
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",

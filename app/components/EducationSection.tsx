@@ -1,3 +1,6 @@
+"use client";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
 const education = [
   {
     degree: "Master of Computer Application (MCA)",
@@ -17,6 +20,8 @@ const education = [
 ];
 
 export default function EducationSection() {
+  const gridRef = useScrollReveal<HTMLDivElement>({ targets: "> div", stagger: 0.15, y: 35, duration: 0.65 });
+
   return (
     <section
       id="education"
@@ -32,6 +37,7 @@ export default function EducationSection() {
         <div className="section-divider" />
 
         <div
+          ref={gridRef}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",

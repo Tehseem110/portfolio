@@ -1,3 +1,6 @@
+"use client";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
 const experiences = [
   {
     role: "Full Stack Developer",
@@ -39,6 +42,8 @@ const experiences = [
 ];
 
 export default function ExperienceSection() {
+  const listRef = useScrollReveal<HTMLDivElement>({ targets: "> div", stagger: 0.13, y: 45, duration: 0.7 });
+
   return (
     <section
       id="experience"
@@ -53,7 +58,7 @@ export default function ExperienceSection() {
         <h2 className="section-title">Experience</h2>
         <div className="section-divider" />
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div ref={listRef} style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {experiences.map((exp, i) => (
             <div
               key={i}
