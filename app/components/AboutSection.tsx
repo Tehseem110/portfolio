@@ -3,7 +3,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const about = {
   summary:
-    "I'm a Full Stack Developer with 3+ years of experience building production-grade web and mobile applications. I specialize in crafting scalable systems — from CRM platforms managing 50,000+ users to offline-first mobile apps — using modern technologies across the full stack.",
+    "I'm a Full Stack Developer with 4+ years of experience building production-grade web and mobile applications. I specialize in crafting scalable systems — from CRM platforms managing 50,000+ users to offline-first mobile apps — using modern technologies across the full stack.",
   highlights: [
     {
       icon: "🚀",
