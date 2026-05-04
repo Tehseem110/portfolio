@@ -119,6 +119,23 @@ const projects = [
   },
 ];
 
+const personalProjects = [
+  {
+    title: "VersusTyping",
+    description:
+      "Challenge your friends to a real-time multiplayer typing race. Create a room, share the link, and see who can type the fastest. Built with Next.js, Socket.io, and a competitive streak.",
+    highlights: [
+      "Real-time multiplayer typing battles",
+      "Room-based matchmaking via share link",
+      "Live WPM & accuracy tracking",
+      "Smooth competitive UI",
+    ],
+    tags: ["Next.js", "Socket.io", "TypeScript", "Node.js"],
+    emoji: "⌨️",
+    link: "https://versustyping.tehseem.in/",
+  },
+];
+
 /* SVG Icons */
 const AndroidIcon = () => (
   <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
@@ -469,6 +486,237 @@ export default function ProjectsSection() {
             </div>
           );
         })}
+      </div>
+
+      {/* ── Personal Projects ── */}
+      <h2 className="section-title" style={{ marginTop: "4rem" }}>
+        Personal Projects
+      </h2>
+      <div className="section-divider" />
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        {personalProjects.map((proj, i) => (
+          <div
+            key={i}
+            className="glass-card"
+            style={{
+              padding: "1.75rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.25rem",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* Accent bar */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "2px",
+                background: "linear-gradient(90deg, #E9631A, #f59e0b)",
+                borderRadius: "12px 12px 0 0",
+              }}
+            />
+
+            {/* Header */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <div
+                style={{
+                  fontSize: "2rem",
+                  width: "52px",
+                  height: "52px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "14px",
+                  background: "rgba(233, 99, 26, 0.1)",
+                  border: "1px solid rgba(233, 99, 26, 0.2)",
+                  flexShrink: 0,
+                }}
+              >
+                {proj.emoji}
+              </div>
+              <div style={{ flex: 1 }}>
+                <h3
+                  style={{
+                    fontSize: "1.1rem",
+                    fontWeight: 700,
+                    color: "#ffffff",
+                    margin: 0,
+                  }}
+                >
+                  {proj.title}
+                </h3>
+                <span style={{ fontSize: "0.78rem", color: "#E9631A", fontWeight: 500 }}>
+                  Personal Project
+                </span>
+              </div>
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                id={`personal-project-link-${proj.title.replace(/\s+/g, "-").toLowerCase()}`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "8px 16px",
+                  borderRadius: "10px",
+                  background: "linear-gradient(135deg, #E9631A, #f59e0b)",
+                  color: "#fff",
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "opacity 0.2s, transform 0.2s",
+                  boxShadow: "0 4px 15px rgba(233, 99, 26, 0.35)",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.opacity = "0.88";
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                }}
+              >
+                <ExternalLinkIcon />
+                Visit Site
+              </a>
+            </div>
+
+            {/* Description */}
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "#a3a3a3",
+                lineHeight: 1.7,
+                margin: 0,
+              }}
+            >
+              {proj.description}
+            </p>
+
+            {/* Highlights */}
+            <ul
+              style={{
+                listStyle: "none",
+                margin: 0,
+                padding: 0,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "6px 1.5rem",
+              }}
+            >
+              {proj.highlights.map((h, j) => (
+                <li
+                  key={j}
+                  style={{
+                    display: "flex",
+                    gap: "8px",
+                    fontSize: "0.8rem",
+                    color: "#a3a3a3",
+                  }}
+                >
+                  <span style={{ color: "#E9631A", fontWeight: 700 }}>✓</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+
+            {/* Tags */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+              {proj.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="chip"
+                  style={{ fontSize: "0.72rem", padding: "3px 10px" }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Webview iframe */}
+            <div
+              style={{
+                borderRadius: "10px",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "#000",
+                position: "relative",
+              }}
+            >
+              {/* Fake browser bar */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "8px 14px",
+                  background: "rgba(255,255,255,0.05)",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
+                  <div
+                    key={c}
+                    style={{
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "50%",
+                      background: c,
+                    }}
+                  />
+                ))}
+                <div
+                  style={{
+                    flex: 1,
+                    marginLeft: "8px",
+                    background: "rgba(255,255,255,0.07)",
+                    borderRadius: "6px",
+                    padding: "3px 10px",
+                    fontSize: "0.72rem",
+                    color: "#666",
+                    fontFamily: "monospace",
+                  }}
+                >
+                  versustyping.tehseem.in
+                </div>
+              </div>
+              <iframe
+                src="https://versustyping.tehseem.in/"
+                title="VersusTyping live preview"
+                style={{
+                  width: "100%",
+                  height: "420px",
+                  border: "none",
+                  display: "block",
+                }}
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms"
+              />
+              {/* Clickable overlay to open in new tab */}
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open VersusTyping in new tab"
+                style={{
+                  position: "absolute",
+                  inset: "36px 0 0 0",
+                  zIndex: 10,
+                  cursor: "pointer",
+                  background: "transparent",
+                }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
