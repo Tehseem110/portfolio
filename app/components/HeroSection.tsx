@@ -1,13 +1,135 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, Bounds } from "@react-three/drei";
-import { Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Environment } from "@react-three/drei";
+import { Suspense, useRef, useMemo } from "react";
+import * as THREE from "three";
 
-/* ---------- 3D MODEL ---------- */
-function Model() {
-  const { scene } = useGLTF("/Model/pony_cartoon.glb");
-  return <primitive object={scene} />;
+/* ---------- 3D ABSTRACT TECH SHAPE ---------- */
+function AbstractTechShape() {
+  const icosahedronRef = useRef<THREE.Mesh>(null);
+  const coreRef = useRef<THREE.Mesh>(null);
+  const particlesRef = useRef<THREE.Points>(null);
+  const ring1Ref = useRef<THREE.Mesh>(null);
+  const ring2Ref = useRef<THREE.Mesh>(null);
+
+  // Generate particle positions on a sphere
+  const particlePositions = useMemo(() => {
+    const count = 120;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = u * 2.0 * Math.PI;
+      const phi = Math.acos(2.0 * v - 1.0);
+      const r = 2.0 + Math.random() * 0.5; // Radius between 2.0 and 2.5
+      
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    return positions;
+  }, []);
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+
+    // 1. Slow, elegant rotation for the wireframe icosahedron
+    if (icosahedronRef.current) {
+      icosahedronRef.current.rotation.x = time * 0.12;
+      icosahedronRef.current.rotation.y = time * 0.18;
+    }
+
+    // 2. Inner core breathes and rotates in opposite direction
+    if (coreRef.current) {
+      coreRef.current.rotation.x = -time * 0.15;
+      coreRef.current.rotation.y = -time * 0.12;
+      const scale = 1.0 + Math.sin(time * 2.0) * 0.06;
+      coreRef.current.scale.set(scale, scale, scale);
+    }
+
+    // 3. Orbiting cluster/particle cloud rotates slowly
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y = time * 0.06;
+      particlesRef.current.rotation.z = time * 0.04;
+    }
+
+    // 4. Concentric outer ring 1 rotates on X and Y axes
+    if (ring1Ref.current) {
+      ring1Ref.current.rotation.x = time * 0.25;
+      ring1Ref.current.rotation.y = time * 0.12;
+    }
+
+    // 5. Concentric outer ring 2 rotates on Y and Z axes
+    if (ring2Ref.current) {
+      ring2Ref.current.rotation.y = -time * 0.2;
+      ring2Ref.current.rotation.z = time * 0.3;
+    }
+  });
+
+  return (
+    <group>
+      {/* 1. Core (Reflective neon orange sphere) */}
+      <mesh ref={coreRef}>
+        <sphereGeometry args={[0.75, 32, 32]} />
+        <meshStandardMaterial
+          color="#E9631A"
+          emissive="#E9631A"
+          emissiveIntensity={0.6}
+          roughness={0.1}
+          metalness={0.9}
+        />
+      </mesh>
+
+      {/* 2. Glowing wireframe icosahedron */}
+      <mesh ref={icosahedronRef}>
+        <icosahedronGeometry args={[1.5, 1]} />
+        <meshBasicMaterial
+          color="#fb923c"
+          wireframe
+          transparent
+          opacity={0.6}
+        />
+      </mesh>
+
+      {/* 3. Orbiting cluster of particles */}
+      <points ref={particlesRef}>
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            args={[particlePositions, 3]}
+          />
+        </bufferGeometry>
+        <pointsMaterial
+          color="#f59e0b"
+          size={0.06}
+          sizeAttenuation
+          transparent
+          opacity={0.8}
+        />
+      </points>
+
+      {/* 4. Concentric Outer Ring 1 */}
+      <mesh ref={ring1Ref}>
+        <torusGeometry args={[2.0, 0.015, 8, 64]} />
+        <meshBasicMaterial
+          color="#E9631A"
+          transparent
+          opacity={0.4}
+        />
+      </mesh>
+
+      {/* 5. Concentric Outer Ring 2 (slightly larger, alternative orientation) */}
+      <mesh ref={ring2Ref} rotation={[Math.PI / 3, 0, Math.PI / 4]}>
+        <torusGeometry args={[2.3, 0.01, 8, 64]} />
+        <meshBasicMaterial
+          color="#fbbf24"
+          transparent
+          opacity={0.3}
+        />
+      </mesh>
+    </group>
+  );
 }
 
 const techStack = [
@@ -44,15 +166,14 @@ export default function HeroSection() {
         <div className="relative h-[400px] md:h-[500px]">
           {/* 3D Canvas */}
           <div className="absolute inset-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden shadow-2xl">
-            <Canvas camera={{ position: [0, 0, 5] }}>
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[2, 2, 2]} intensity={2.5} />
+            <Canvas camera={{ position: [0, 0, 5.5], fov: 60 }}>
+              <ambientLight intensity={1.2} />
+              <directionalLight position={[3, 3, 3]} intensity={2.0} />
+              <pointLight position={[-3, -3, -3]} intensity={1.0} color="#E9631A" />
               <Environment preset="city" />
 
               <Suspense fallback={null}>
-                <Bounds fit clip observe margin={1.2}>
-                  <Model />
-                </Bounds>
+                <AbstractTechShape />
               </Suspense>
 
               <OrbitControls

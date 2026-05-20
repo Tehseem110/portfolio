@@ -226,12 +226,12 @@ body {
   /* Reduced blur since card bg is solid white, but kept for style */
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .glass-card:hover {
   border-color: rgba(233, 99, 26, 0.6);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(233, 99, 26, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(233, 99, 26, 0.16);
 }
 
 /* Gradient text */

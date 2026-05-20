@@ -13,7 +13,7 @@ const projects = [
     highlights: [
       "High Quality 3D Model Onboarding Screen",
       "AI-powered Diet Tracker integration",
-      "Api Less Architecture  for improved performace",
+      "API-less architecture for improved performance",
       "Custom AI Chatbot for diet and fitness",
     ],
     tags: ["React Native", "Expo", "AI"],
@@ -72,7 +72,7 @@ const projects = [
       "Multi-role portal (customer/team/admin)",
       "WhatsApp API automated notifications",
       "PDF invoice generation & delivery",
-      "-40% customer inquiry volume",
+      "40% reduction in customer inquiry volume",
     ],
     tags: ["React", "Node.js", "WhatsApp API", "Express"],
     emoji: "🚁",
@@ -107,7 +107,7 @@ const projects = [
     highlights: [
       "Barcode scanning integration",
       "Real-time stock tracking",
-      "-60% stock management time",
+      "60% reduction in stock management time",
       "Automated reporting",
     ],
     tags: ["React", "Node.js", "Express", "MySQL"],
@@ -196,7 +196,7 @@ export default function ProjectsSection() {
           return (
             <div
               key={i}
-              className="glass-card"
+              className="glass-card project-card"
               style={{
                 padding: "1.75rem",
                 display: "flex",
@@ -217,72 +217,68 @@ export default function ProjectsSection() {
                     height: "2px",
                     background: "linear-gradient(90deg, #E9631A, #f59e0b)",
                     borderRadius: "12px 12px 0 0",
+                    zIndex: 10,
                   }}
                 />
               )}
 
-              {/* Header */}
+              {/* Custom High-Tech Banner Mockup */}
+              <div className="project-mockup-banner">
+                {project.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-banner-image"
+                  />
+                ) : (
+                  <div className="project-banner-fallback">
+                    <span className="project-banner-bg-grid" />
+                    <span className="project-banner-circle" />
+                    <span className="project-banner-emoji">
+                      {project.emoji}
+                    </span>
+                    <div className="mockup-ui-line line-1" />
+                    <div className="mockup-ui-line line-2" />
+                    <div className="mockup-ui-circle" />
+                  </div>
+                )}
+                {project.image && (
+                  <div className="project-banner-overlay" />
+                )}
+              </div>
+
+              {/* Header Text */}
               <div
                 style={{
                   display: "flex",
-                  alignItems: "flex-start",
-                  gap: "1rem",
+                  flexDirection: "column",
+                  gap: "0.25rem",
+                  marginTop: "0.25rem",
                 }}
               >
-                <div
+                <h3
                   style={{
-                    fontSize: "2rem",
-                    width: "52px",
-                    height: "52px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "14px",
-                    background: project.image
-                      ? "transparent"
-                      : "rgba(233, 99, 26, 0.1)",
-                    border: "1px solid rgba(233, 99, 26, 0.2)",
-                    flexShrink: 0,
-                    overflow: "hidden",
+                    fontSize: "1.15rem",
+                    fontWeight: 800,
+                    color: "#ffffff",
+                    margin: 0,
+                    lineHeight: 1.35,
                   }}
                 >
-                  {project.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    project.emoji
-                  )}
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <h3
-                    style={{
-                      fontSize: "1.05rem",
-                      fontWeight: 700,
-                      color: "#ffffff",
-                      margin: 0,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-                  <span
-                    style={{
-                      fontSize: "0.78rem",
-                      color: "#E9631A",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {project.context}
-                  </span>
-                </div>
+                  {project.title}
+                </h3>
+                <span
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "#E9631A",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  {project.context}
+                </span>
               </div>
 
               {/* Description */}
@@ -498,7 +494,7 @@ export default function ProjectsSection() {
         {personalProjects.map((proj, i) => (
           <div
             key={i}
-            className="glass-card"
+            className="glass-card project-card"
             style={{
               padding: "1.75rem",
               display: "flex",
@@ -718,6 +714,101 @@ export default function ProjectsSection() {
           </div>
         ))}
       </div>
+
+      <style>{`
+        .project-card {
+          transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s !important;
+        }
+        .project-card:hover {
+          transform: translateY(-6px) scale(1.01) !important;
+          border-color: rgba(233, 99, 26, 0.45) !important;
+          box-shadow: 0 20px 40px rgba(233, 99, 26, 0.15) !important;
+        }
+        .project-mockup-banner {
+          height: 120px;
+          margin: -1.75rem -1.75rem 0.5rem -1.75rem;
+          position: relative;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          overflow: hidden;
+          background: #0d0d0d;
+          display: flex;
+          align-items: center;
+          justifyContent: center;
+        }
+        .project-banner-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .project-card:hover .project-banner-image {
+          transform: scale(1.05);
+        }
+        .project-banner-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, transparent 40%, rgba(10, 10, 10, 0.85) 100%);
+          pointer-events: none;
+        }
+        .project-banner-fallback {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justifyContent: center;
+          background: linear-gradient(135deg, rgba(233, 99, 26, 0.12) 0%, rgba(10, 10, 10, 0.95) 100%);
+        }
+        .project-banner-bg-grid {
+          position: absolute;
+          inset: 0;
+          opacity: 0.12;
+          background-image: linear-gradient(rgba(233, 99, 26, 0.15) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(233, 99, 26, 0.15) 1px, transparent 1px);
+          background-size: 14px 14px;
+        }
+        .project-banner-circle {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(233, 99, 26, 0.3) 0%, transparent 70%);
+          filter: blur(8px);
+        }
+        .project-banner-emoji {
+          font-size: 2.3rem;
+          z-index: 2;
+          filter: drop-shadow(0 0 10px rgba(233, 99, 26, 0.4));
+          transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover .project-banner-emoji {
+          transform: scale(1.18) rotate(4deg);
+        }
+        .mockup-ui-line {
+          position: absolute;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.04);
+          border-radius: 2px;
+        }
+        .mockup-ui-line.line-1 {
+          width: 40px;
+          top: 15px;
+          left: 15px;
+        }
+        .mockup-ui-line.line-2 {
+          width: 60px;
+          top: 24px;
+          left: 15px;
+        }
+        .mockup-ui-circle {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 1.5px solid rgba(255, 255, 255, 0.04);
+          top: 15px;
+          right: 15px;
+        }
+      `}</style>
     </section>
   );
 }

@@ -28,28 +28,9 @@ const about = {
   ],
 };
 
-const skillGroups = [
-  {
-    category: "Frontend",
-    icon: "🎨",
-    skills: ["React.js", "React Native", "Next.js", "Tailwind CSS", "Redux", "TypeScript"],
-  },
-  {
-    category: "Backend",
-    icon: "⚙️",
-    skills: ["Node.js", "Express.js", "Nest.js", "RESTful APIs", "Serverless"],
-  },
-  {
-    category: "Database & Cloud",
-    icon: "🗄️",
-    skills: ["MySQL", "Sequelize ORM", "Google Cloud", "Firebase"],
-  },
-];
-
 export default function AboutSection() {
   const bioRef = useScrollReveal<HTMLDivElement>({ stagger: 0.14, y: 32, duration: 0.7 });
   const cardsRef = useScrollReveal<HTMLDivElement>({ stagger: 0.1, y: 36, duration: 0.6 });
-  const skillsRef = useScrollReveal<HTMLDivElement>({ targets: "> div", stagger: 0.12, y: 24, duration: 0.55 });
 
   return (
     <section
@@ -173,81 +154,6 @@ export default function AboutSection() {
                 >
                   {h.desc}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Technical Skills ─────────────────────────────────────── */}
-        <div style={{ marginTop: "4rem" }}>
-          <h3
-            style={{
-              fontSize: "1.1rem",
-              fontWeight: 700,
-              color: "#ffffff",
-              marginBottom: "0.4rem",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Technical Skills
-          </h3>
-          <div
-            style={{
-              width: "40px",
-              height: "3px",
-              background: "#E9631A",
-              borderRadius: "2px",
-              marginBottom: "2rem",
-            }}
-          />
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem",
-            }}
-            className="skills-groups"
-          >
-            {skillGroups.map((group) => (
-              <div key={group.category}>
-                {/* Category label */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  <span style={{ fontSize: "1rem" }}>{group.icon}</span>
-                  <span
-                    style={{
-                      fontSize: "0.78rem",
-                      fontWeight: 600,
-                      color: "#E9631A",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                    }}
-                  >
-                    {group.category}
-                  </span>
-                </div>
-
-                {/* Skill chips */}
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                  }}
-                >
-                  {group.skills.map((skill) => (
-                    <span key={skill} className="chip">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
